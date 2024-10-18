@@ -9,17 +9,19 @@ def get_logger(name=__name__):
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
 
-    # Создаем консольный обработчик
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
+    # Проверяем, есть ли уже обработчики
+    if not logger.handlers:
+        # Создаем консольный обработчик только если их нет
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.DEBUG)
 
-    # Форматтер для вывода сообщений
-    formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
-    ch.setFormatter(formatter)
+        # Форматтер для вывода сообщений
+        formatter = logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        )
+        ch.setFormatter(formatter)
 
-    # Добавляем обработчик к логгеру
-    logger.addHandler(ch)
+        # Добавляем обработчик к логгеру
+        logger.addHandler(ch)
 
     return logger
