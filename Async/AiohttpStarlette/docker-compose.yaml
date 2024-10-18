@@ -9,3 +9,12 @@ services:
     ports:
       - "8000:8000"
       - "8080:8080"
+
+  postgres:
+    image: postgres:14.2
+    environment:
+      POSTGRES_DB: ${P_DB}
+      POSTGRES_USER: ${P_USER}
+      POSTGRES_PASSWORD: ${P_PASS}
+    ports:
+      - "5432:5432"
