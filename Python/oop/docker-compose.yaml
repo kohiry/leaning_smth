@@ -1,0 +1,8 @@
+services:
+  app:
+    build:
+      dockerfile: docker/app/Dockerfile
+      context: .
+    volumes:
+      - .:/app
+    command: sh -c ""
