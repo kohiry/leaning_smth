@@ -70,4 +70,4 @@ def validate_request_starlette(schema: type[BaseSchema]):
 
 # Для Aiohttp
 def validate_request_aiohttp(schema: type[BaseSchema]):
-    return validate_request_decorator(schema, web.json_response, "1")
+    return validate_request_decorator(schema, web.json_response, "1")  # TODO заглушка
