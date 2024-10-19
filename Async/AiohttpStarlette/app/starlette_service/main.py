@@ -3,13 +3,13 @@ import uvicorn
 
 from app.config import settings
 from app.pkg.common import BaseServer, BaseRouter
-from app.starlette_service.routers import BookRouter
+from app.starlette_service.routers import StarletteBookRouter
 
 
 class StarletteServer(BaseServer):
     __app = Starlette()
     __routers: list[type[BaseRouter]] = [
-        BookRouter,
+        StarletteBookRouter,
     ]
 
     async def _add_routes(self):

@@ -17,10 +17,12 @@ from starlette.endpoints import HTTPEndpoint
 
 from app.pkg.utils import validate_request_starlette
 
+__all__ = ["StarletteBookRouter"]
+
 logger = get_logger()
 
 
-class BookRouter(HTTPEndpoint, BaseRouter):
+class StarletteBookRouter(HTTPEndpoint, BaseRouter):
     repository: BookRepository = BookRepository()
 
     @validate_request_starlette(schema=GetBookByNameSchema)
@@ -63,7 +65,7 @@ class BookRouter(HTTPEndpoint, BaseRouter):
     def get_routers() -> Route:
         return Route(
             "/book",
-            endpoint=BookRouter,
+            endpoint=StarletteBookRouter,
             methods=[
                 HttpVerbs.GET.value,
                 HttpVerbs.POST.value,

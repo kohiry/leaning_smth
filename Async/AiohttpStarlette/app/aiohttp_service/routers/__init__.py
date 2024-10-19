@@ -1,3 +1,3 @@
-from app.aiohttp_service.routers.book import BookRouter
+from app.aiohttp_service.routers.book import AiohttpBookRouter
 
-__all__ = ["BookRouter"]
+__all__ = ["AiohttpBookRouter"]

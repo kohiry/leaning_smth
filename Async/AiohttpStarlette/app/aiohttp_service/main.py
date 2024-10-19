@@ -1,14 +1,18 @@
 from aiohttp import web
 
-from app.aiohttp_service.routers import BookRouter
+from app.aiohttp_service.routers import AiohttpBookRouter
 from app.config import settings
 from app.pkg.common import BaseServer, BaseRouter
+
+__all__ = [
+    "AioHttpServer",
+]
 
 
 class AioHttpServer(BaseServer):
     __app = web.Application()
     __routers: list[type[BaseRouter]] = [
-        BookRouter,
+        AiohttpBookRouter,
     ]
 
     def _add_routes(self):

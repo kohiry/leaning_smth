@@ -1,6 +1,6 @@
-from app.starlette_service.routers.book import BookRouter
+from app.starlette_service.routers.book import StarletteBookRouter
 
 
 __all__ = [
-    "BookRouter",
+    "StarletteBookRouter",
 ]

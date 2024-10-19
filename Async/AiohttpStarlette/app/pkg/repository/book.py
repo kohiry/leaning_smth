@@ -15,6 +15,10 @@ from sqlalchemy import delete, update
 
 logger = get_logger()
 
+__all__ = [
+    "BookRepository",
+]
+
 
 class BookRepository(BaseRepository):
     @session_dependency

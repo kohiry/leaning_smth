@@ -4,6 +4,11 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sess
 
 from app.config import settings
 
+__all__ = [
+    "get_db_session",
+]
+
+
 DATABASE_URL = (
     f"{settings.POSTGRES_DRIVER_SQLALCHEMY}://{settings.POSTGRES_USER}"
     + f":{settings.POSTGRES_PASSWORD}@{settings.POSTGRES_HOST}:{settings.POSTGRES_PORT}"

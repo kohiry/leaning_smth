@@ -1,5 +1,14 @@
 from app.pkg.common import BaseSchema
 
+__all__ = [
+    "BookSchema",
+    "GetBookByNameSchema",
+    "CreateBookSchema",
+    "UpdateBookSchema",
+    "DeleteBookByNameSchema",
+    "BaseBookSchema",
+]
+
 
 class BaseBookSchema(BaseSchema):
     pass

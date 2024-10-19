@@ -1,5 +1,9 @@
 from pydantic_settings import BaseSettings
 
+__all__ = [
+    "settings",
+]
+
 
 class Settings(BaseSettings):
     STAR_HOST: str

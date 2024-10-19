@@ -2,6 +2,8 @@ import logging
 
 from app.config import settings
 
+__all__ = ["get_logger"]
+
 
 def get_logger(name=__name__):
     """
