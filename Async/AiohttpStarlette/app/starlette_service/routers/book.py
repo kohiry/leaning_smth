@@ -4,7 +4,12 @@ from app.config import get_logger
 from app.pkg.common import BaseRouter
 from app.pkg.common.schema import HttpVerbs
 from app.pkg.repository.book import BookRepository
-from app.pkg.schema import GetBookByNameSchema, CreateBookSchema, DeleteBookByNameSchema
+from app.pkg.schema import (
+    GetBookByNameSchema,
+    CreateBookSchema,
+    DeleteBookByNameSchema,
+    UpdateBookSchema,
+)
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 from starlette.exceptions import HTTPException
@@ -45,8 +50,14 @@ class BookRouter(HTTPEndpoint, BaseRouter):
         logger.info(f"Delete Book by name {query.name}")
         return JSONResponse(result.model_dump_json())
 
-    async def put(self, request: Request):
-        pass
+    @validate_request_starlette(schema=UpdateBookSchema)
+    async def put(self, request: Request, query: UpdateBookSchema):
+        result = await self.repository.update(cmd=query)
+        if result is None:
+            logger.error(f"404, book not found with name {query.old_name}")
+            raise HTTPException(status_code=404, detail="Book not found!")
+        logger.info(f"Update Book by name {query.name}")
+        return JSONResponse(result.model_dump_json())
 
     @staticmethod
     def get_routers() -> Route:

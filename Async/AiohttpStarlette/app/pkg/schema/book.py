@@ -15,6 +15,7 @@ class CreateBookSchema(BaseBookSchema):
 
 
 class UpdateBookSchema(BaseBookSchema):
+    old_name: str
     name: str
     author: str
 

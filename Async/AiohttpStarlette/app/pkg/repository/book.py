@@ -11,7 +11,7 @@ from app.pkg.schema import (
 from app.pkg.utils import session_dependency
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy import delete
+from sqlalchemy import delete, update
 
 logger = get_logger()
 
@@ -49,13 +49,28 @@ class BookRepository(BaseRepository):
         cmd: DeleteBookByNameSchema,
         session: AsyncSession,
     ) -> DeleteBookByNameSchema | None:
-        result_check = delete(BookModel).where(BookModel.name == cmd.name)
+        result_check = await self.get_by_name(cmd)
         if result_check is None:
             return None
-        await session.execute(result_check)
+        result = delete(BookModel).where(BookModel.name == cmd.name)
+        await session.execute(result)
         await session.commit()
         return cmd
 
     @session_dependency
-    async def update(self, cmd: UpdateBookSchema, session: AsyncSession):
-        pass
+    async def update(
+        self,
+        cmd: UpdateBookSchema,
+        session: AsyncSession,
+    ) -> BookSchema | None:
+        result_check = await self.get_by_name(GetBookByNameSchema(name=cmd.old_name))
+        if result_check is None:
+            return None
+        stmt = (
+            update(BookModel)
+            .where(BookModel.name == cmd.old_name)
+            .values(name=cmd.name, author=cmd.author)
+        )
+        await session.execute(stmt)
+        await session.commit()
+        return BookSchema.model_validate(cmd)
