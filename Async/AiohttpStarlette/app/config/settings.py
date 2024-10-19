@@ -15,6 +15,10 @@ class Settings(BaseSettings):
     POSTGRES_HOST: str
     POSTGRES_PORT: int
     POSTGRES_DRIVER_ALEMBIC: str
+    POSTGRES_DRIVER_SQLALCHEMY: str
 
     class Config:
         env_file = ".env"
+
+
+settings = Settings()
