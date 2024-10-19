@@ -4,6 +4,8 @@
 рабочий.
 """
 
+from contextlib import asynccontextmanager
+
 from pydantic import BaseModel
 import functools
 from pydantic import ValidationError
@@ -13,7 +15,19 @@ from aiohttp import web
 __all__ = [
     "validate_request_aiohttp",
     "validate_request_starlette",
+    "session_dependency",
 ]
+
+from app.pkg.session import get_db_session
+
+
+def session_dependency(func):
+    @functools.wraps(func)
+    async def wrapper(*args, **kwargs):
+        async with get_db_session() as session:
+            return await func(*args, session=session, **kwargs)
+
+    return wrapper
 
 
 async def validate_request(request, schema):
