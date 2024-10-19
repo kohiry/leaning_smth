@@ -1,5 +1,5 @@
 from app.pkg.common import BaseRepository
-from app.pkg.models import Book
+from app.pkg.models import BookModel
 from app.pkg.schema import (
     GetBookByNameSchema,
     BookSchema,
@@ -19,7 +19,9 @@ class BookRepository(BaseRepository):
         query: GetBookByNameSchema,
         session: AsyncSession,
     ) -> BookSchema | None:
-        result = await session.execute(select(Book).where(Book.name == query.name))
+        result = await session.execute(
+            select(BookModel).where(BookModel.name == query.name)
+        )
         book = result.scalar_one_or_none()
         if book is None:
             return None

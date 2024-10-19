@@ -1,8 +1,7 @@
-from app.pkg.models.base import Base
-from app.pkg.models.models import Book, Author
+from app.pkg.models.base import BaseModel
+from app.pkg.models.models import BookModel
 
 __all__ = [
-    "Base",
-    "Author",
-    "Book",
+    "BaseModel",
+    "BookModel",
 ]
