@@ -10,6 +10,7 @@ from starlette.responses import JSONResponse
 from starlette.exceptions import HTTPException
 from starlette.endpoints import HTTPEndpoint
 
+from app.pkg.utils import validate_request_starlette
 
 logger = get_logger()
 
@@ -17,11 +18,13 @@ logger = get_logger()
 class BookRouter(HTTPEndpoint, BaseRouter):
     repository: BookRepository = BookRepository()
 
-    async def get(self, request: Request):
-        result = await self.repository.get_by_name(GetBookByNameSchema(name="zxc"))
+    @validate_request_starlette(schema=GetBookByNameSchema)
+    async def get(self, request: Request, query: GetBookByNameSchema):
+        result = await self.repository.get_by_name(query)
         if result is None:
-            logger.error("404, book not found with name=zxc")
+            logger.error(f"404, book not found with name {query.name}")
             raise HTTPException(status_code=404, detail="Book not Found!")
+        logger.info(f"Find book with name {query.name}!!")
         return JSONResponse(result.model_dump_json())
 
     async def post(self, request: Request):

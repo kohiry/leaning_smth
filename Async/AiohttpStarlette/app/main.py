@@ -13,3 +13,5 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+# TODO теперь мне нужно доделать все ручки startlette и перейти к роутингу aiohttp + не забыть сделать все в нужных пбстракциях
