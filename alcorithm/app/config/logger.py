@@ -16,9 +16,7 @@ def get_logger(name=__name__):
         ch.setLevel(logging.DEBUG)
 
         # Форматтер для вывода сообщений
-        formatter = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        )
+        formatter = logging.Formatter("%(message)s")
         ch.setFormatter(formatter)
 
         # Добавляем обработчик к логгеру

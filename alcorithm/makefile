@@ -1,2 +1,2 @@
 up:
-	docker-compose up
+	python -B -m app.main
