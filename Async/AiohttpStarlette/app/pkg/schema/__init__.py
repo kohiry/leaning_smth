@@ -1,6 +1,5 @@
 from app.pkg.schema.book import (
     BookSchema,
-    BaseScheme,
     CreateBookSchema,
     UpdateBookSchema,
     DeleteBookByNameSchema,
@@ -14,11 +13,11 @@ from app.pkg.schema.author import (
     GetAuthorByNameSchema,
     UpdateAuthorSchema,
 )
+from app.pkg.schema.base import BaseSchema, HttpVerbs
 
 __all__ = [
     # Book Schemas
     "BookSchema",
-    "BaseScheme",
     "CreateBookSchema",
     "UpdateBookSchema",
     "DeleteBookByNameSchema",
@@ -29,4 +28,7 @@ __all__ = [
     "DeleteAuthorByNameSchema",
     "GetAuthorByNameSchema",
     "UpdateAuthorSchema",
+    # Base
+    "BaseSchema",
+    "HttpVerbs",
 ]

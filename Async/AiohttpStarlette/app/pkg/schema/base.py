@@ -2,8 +2,10 @@ from enum import Enum
 from pydantic import BaseModel
 
 
-class BaseScheme(BaseModel):
-    pass
+class BaseSchema(BaseModel):
+
+    class Config:
+        from_attributes = True
 
 
 class HttpVerbs(Enum):

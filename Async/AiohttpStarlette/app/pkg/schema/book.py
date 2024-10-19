@@ -1,7 +1,7 @@
-from app.pkg.schema.base import BaseScheme
+from app.pkg.schema.base import BaseSchema
 
 
-class BaseBookSchema(BaseScheme):
+class BaseBookSchema(BaseSchema):
     pass
 
 
