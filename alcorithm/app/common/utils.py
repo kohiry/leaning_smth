@@ -1,6 +1,16 @@
 import os
 
+from app.config import get_logger
+
+logger = get_logger()
+
 
 def clear_console():
     """Очистить консоль."""
-    os.system("cls" if os.name == "nt" else "clear")
+    os.system("clear")
+
+
+def cat_file(filename: str):
+    """Прочитать файл."""
+    logger.info("Code Example:\n\n")
+    os.system(f"cat app/data_structures/examples/{filename}")

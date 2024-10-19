@@ -1,3 +1,4 @@
+from app.common.utils import cat_file
 from app.config import get_logger
 
 __all__ = [
@@ -27,6 +28,7 @@ def explain_array():
         "Пример: массив целых чисел [1, 2, 3, 4, 5]. "
         "Доступ к третьему элементу: my_array[2]."
     )
+    cat_file("array.py")
 
 
 def explain_linked_list():
@@ -40,6 +42,7 @@ def explain_linked_list():
         "Пример: связный список: 1 -> 2 -> 3 -> 4. "
         "Для добавления элемента '0' в начало: head = Node(0, head)."
     )
+    cat_file("linked_list.py")
 
 
 def explain_stack():
@@ -51,6 +54,7 @@ def explain_stack():
     logger.info(
         "Пример: стек, представляющий операции: push(1), push(2), pop() вернет 2."
     )
+    cat_file("stack.py")
 
 
 def explain_queue():

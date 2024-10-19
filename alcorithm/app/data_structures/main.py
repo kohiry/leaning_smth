@@ -43,7 +43,7 @@ def ds_start():
     # Получение выбранной структуры данных
     chosen_structure = list(DataStructures)[int(choose) - 1]
     logger.info(f"Вы выбрали: {chosen_structure.value}")
-    logger.info("\n" * 9)
+    logger.info("\n")
 
     # Вызов соответствующей функции теории
     if chosen_structure == DataStructures.ARRAY:
@@ -66,5 +66,5 @@ def ds_start():
         explain_heap()
     elif chosen_structure == DataStructures.GRAPH:
         explain_graph()
-    logger.info("\n" * 9)
+    logger.info("\n")
     input("Press Enter to restart")
