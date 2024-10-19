@@ -66,6 +66,7 @@ def explain_queue():
     logger.info(
         "Пример: очередь, представляющая операции: enqueue(1), enqueue(2), dequeue() вернет 1."
     )
+    cat_file("queue.py")
 
 
 def explain_hash_table():
@@ -79,6 +80,7 @@ def explain_hash_table():
         "Пример: хеш-таблица: {'name': 'Alice', 'age': 30}. "
         "Доступ к значению по ключу: my_hash_table['name'] вернет 'Alice'."
     )
+    cat_file("hash_table.py")
 
 
 def explain_set():
@@ -91,6 +93,7 @@ def explain_set():
         "Пример: множество: {1, 2, 3}. "
         "Добавление элемента: my_set.add(4) делает множество {1, 2, 3, 4}."
     )
+    cat_file("set.py")
 
 
 def explain_binary_tree():
@@ -101,6 +104,7 @@ def explain_binary_tree():
     logger.info(
         "Пример: бинарное дерево: 4 (корень) -> 2 (левый узел), 6 (правый узел)."
     )
+    cat_file("binary_tree.py")
 
 
 def explain_binary_search_tree():
@@ -113,6 +117,7 @@ def explain_binary_search_tree():
         "Пример: бинарное дерево поиска: 4 (корень) -> 2 (левый узел), 6 (правый узел). "
         "Для поиска 6: начиная с корня, идем вправо."
     )
+    cat_file("binary_search_tree.py")
 
 
 def explain_heap():
@@ -125,6 +130,7 @@ def explain_heap():
         "Пример: max-heap: [10, 5, 6, 2, 3]. "
         "10 — корень, больше своих дочерних узлов 5 и 6."
     )
+    cat_file("heap.py")
 
 
 def explain_graph():
@@ -137,3 +143,4 @@ def explain_graph():
         "Пример: граф: A -- B (ребро между A и B), "
         "C -> D (ориентированное ребро от C к D)."
     )
+    cat_file("graph.py")
