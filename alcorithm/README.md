@@ -4,4 +4,4 @@
 
 ## ,';-3
 
-### Да простит меня [Кармен](https://en.wikipedia.org/wiki/Introduction_to_Algorithms).
+### Да простит меня [Кормен](https://en.wikipedia.org/wiki/Introduction_to_Algorithms).

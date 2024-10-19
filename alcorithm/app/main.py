@@ -1,6 +1,7 @@
 from enum import Enum
 
 from app.alghoritms import alg_start
+from app.common import clear_console
 from app.data_structures import ds_start
 from app.config import get_logger
 
@@ -25,7 +26,10 @@ def app():
 """
     )
     choose = input("Выбери топик: 1, 2: \nВариант: ")
-    if not choose.isalpha():
+    clear_console()
+    if choose == "q":
+        quit()
+    if not choose.isdigit():
         return
     if int(choose) == 1:
         alg_start()
@@ -35,4 +39,5 @@ def app():
 
 if __name__ == "__main__":
     while True:
+        clear_console()
         app()
