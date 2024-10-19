@@ -4,7 +4,7 @@ from app.config import get_logger
 from app.pkg.common import BaseRouter
 from app.pkg.common.schema import HttpVerbs
 from app.pkg.repository.book import BookRepository
-from app.pkg.schema import GetBookByNameSchema
+from app.pkg.schema import GetBookByNameSchema, CreateBookSchema, DeleteBookByNameSchema
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 from starlette.exceptions import HTTPException
@@ -27,11 +27,23 @@ class BookRouter(HTTPEndpoint, BaseRouter):
         logger.info(f"Find book with name {query.name}!!")
         return JSONResponse(result.model_dump_json())
 
-    async def post(self, request: Request):
-        pass
+    @validate_request_starlette(schema=CreateBookSchema)
+    async def post(self, request: Request, query=CreateBookSchema):
+        result = await self.repository.create(cmd=query)
+        if result is None:
+            logger.error(f"Find same row in base, with name {query.name}")
+            raise HTTPException(status_code=400, detail="Book already exist!")
+        logger.info(f"Create Book {query}")
+        return JSONResponse(result.model_dump_json())
 
-    async def delete(self, request: Request):
-        pass
+    @validate_request_starlette(schema=DeleteBookByNameSchema)
+    async def delete(self, request: Request, query: DeleteBookByNameSchema):
+        result = await self.repository.delete_by_name(cmd=query)
+        if result is None:
+            logger.error(f"404, book not found with name {query.name}")
+            raise HTTPException(status_code=404, detail="Book not found!")
+        logger.info(f"Delete Book by name {query.name}")
+        return JSONResponse(result.model_dump_json())
 
     async def put(self, request: Request):
         pass
@@ -43,8 +55,8 @@ class BookRouter(HTTPEndpoint, BaseRouter):
             endpoint=BookRouter,
             methods=[
                 HttpVerbs.GET.value,
-                HttpVerbs.PUT.value,
                 HttpVerbs.POST.value,
+                HttpVerbs.PUT.value,
                 HttpVerbs.DELETE.value,
             ],
         )

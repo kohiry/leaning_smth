@@ -35,7 +35,12 @@ async def validate_request(
         data: dict | None = None
         if request.method == HttpVerbs.GET.value:
             data = request.query_params
-
+        if request.method in [
+            HttpVerbs.POST.value,
+            HttpVerbs.DELETE.value,
+            HttpVerbs.PUT.value,
+        ]:
+            data = await request.json()
         if data is None:
             raise ValidationError("Missed verbs")
         return schema.model_validate(dict(data)), None
@@ -51,7 +56,6 @@ def validate_request_decorator(schema, response_class, error_raising):
     def decorator(func):
         @functools.wraps(func)  # save docs original func
         async def wrapper(self, request, *args, **kwargs):
-            logger.info(request.query_params["name"])
             valid_data, error = await validate_request(request, schema)
             if error:
                 raise error_raising(detail="Not valid data.", status_code=400)
