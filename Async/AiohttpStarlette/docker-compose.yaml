@@ -1,0 +1,31 @@
+services:
+  app:
+    build:
+      dockerfile: docker/app/Dockerfile
+      context: .
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+      - migration
+    command: sh -c "python3 -B -m app.main"
+    ports:
+      - "${STAR_PORT}:${STAR_PORT}"
+      - "${AIO_PORT}:${AIO_PORT}"
+
+  migration:
+    build:
+      dockerfile: docker/app/Dockerfile
+    depends_on:
+      - postgres
+    command: sh -c "alembic upgrade head"
+    restart: on-failure
+
+  postgres:
+    image: postgres:14.2
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
