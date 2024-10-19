@@ -1,6 +1,11 @@
 from abc import ABCMeta, abstractmethod
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.pkg.schema import BaseSchema
+from app.pkg.common import BaseSchema
+
+
+__all__ = [
+    "BaseRepository",
+]
 
 
 class BaseRepository(metaclass=ABCMeta):

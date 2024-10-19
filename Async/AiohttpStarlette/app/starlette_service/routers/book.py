@@ -1,18 +1,20 @@
 from starlette.routing import Route
 
 from app.config import get_logger
+from app.pkg.common import BaseRouter
+from app.pkg.common.schema import HttpVerbs
 from app.pkg.repository.book import BookRepository
-from app.pkg.schema import GetBookByNameSchema, HttpVerbs
-from app.starlette_service.routers.base import BaseRouter
+from app.pkg.schema import GetBookByNameSchema
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 from starlette.exceptions import HTTPException
+from starlette.endpoints import HTTPEndpoint
 
 
 logger = get_logger()
 
 
-class BookRouter(BaseRouter):
+class BookRouter(HTTPEndpoint, BaseRouter):
     repository: BookRepository = BookRepository()
 
     async def get(self, request: Request):

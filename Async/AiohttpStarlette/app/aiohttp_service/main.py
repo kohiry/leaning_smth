@@ -1,8 +1,8 @@
 from aiohttp import web
 
 from app.aiohttp_service.router import get_routes
-from app.base import BaseServer
 from app.config import settings
+from app.pkg.common import BaseServer
 
 
 class AioHttpServer(BaseServer):

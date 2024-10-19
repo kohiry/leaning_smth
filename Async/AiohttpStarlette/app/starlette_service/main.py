@@ -1,9 +1,9 @@
 from starlette.applications import Starlette
 import uvicorn
 
-from app.base import BaseServer
 from app.config import settings
-from app.starlette_service.routers import BookRouter, BaseRouter
+from app.pkg.common import BaseServer, BaseRouter
+from app.starlette_service.routers import BookRouter
 
 
 class StarletteServer(BaseServer):

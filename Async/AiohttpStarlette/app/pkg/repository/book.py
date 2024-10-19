@@ -1,5 +1,5 @@
+from app.pkg.common import BaseRepository
 from app.pkg.models import Book
-from app.pkg.repository.base import BaseRepository
 from app.pkg.schema import (
     GetBookByNameSchema,
     BookSchema,
