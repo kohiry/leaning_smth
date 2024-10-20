@@ -69,6 +69,8 @@ max_heap.insert(2)
 max_heap.insert(3)
 max_heap.insert(101)
 max_heap.insert(102)
+max_heap.insert(6)
+max_heap.insert(7)
 
 
 print(max_heap.extract_max())  # Вывод: 30
