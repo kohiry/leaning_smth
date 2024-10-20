@@ -81,7 +81,6 @@ def explain_hash_table():
         "Пример: хеш-таблица: {'name': 'Alice', 'age': 30}. "
         "Доступ к значению по ключу: my_hash_table['name'] вернет 'Alice'."
     )
-    input("\n Нажми Enter чтобы посмотреть пример в коде.")
     cat_file("hash_table.py")
     input("\n Нажми Enter чтобы посмотреть теорию про коллизии.")
     clear_console()
