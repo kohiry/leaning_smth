@@ -25,7 +25,7 @@ def app():
 2) {Topic.DATA_STRUCTURES.value}
 """
     )
-    choose = input("Выбери топик: 1, 2: \nВариант: ")
+    choose = input("Вариант: 1-2 or q\n")
     clear_console()
     if choose == "q":
         quit()

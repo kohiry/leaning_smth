@@ -13,4 +13,4 @@ def clear_console():
 def cat_file(filename: str):
     """Прочитать файл."""
     logger.info("Code Example:\n\n")
-    os.system(f"cat app/data_structures/examples/{filename}")
+    os.system(f"vim -R app/data_structures/examples/{filename}")

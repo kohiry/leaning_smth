@@ -5,3 +5,6 @@
 ## ,';-3
 
 ### Да простит меня [Кормен](https://en.wikipedia.org/wiki/Introduction_to_Algorithms).
+
+## Запуск
+- запуск `make up`
