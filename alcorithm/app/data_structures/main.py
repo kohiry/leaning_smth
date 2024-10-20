@@ -17,7 +17,6 @@ class DataStructures(Enum):
     QUEUE = "Queue (Очередь)"
     HASH_TABLE = "Hash Table (Хеш-таблица)"
     SET = "Set (Множество)"
-    BINARY_TREE = "Binary Tree (Бинарное дерево)"
     BINARY_SEARCH_TREE = "Binary Search Tree (Бинарное дерево поиска)"
     HEAP = "Heap (Куча)"
     GRAPH = "Graph (Граф)"
@@ -58,8 +57,6 @@ def ds_start():
         explain_hash_table()
     elif chosen_structure == DataStructures.SET:
         explain_set()
-    elif chosen_structure == DataStructures.BINARY_TREE:
-        explain_binary_tree()
     elif chosen_structure == DataStructures.BINARY_SEARCH_TREE:
         explain_binary_search_tree()
     elif chosen_structure == DataStructures.HEAP:
