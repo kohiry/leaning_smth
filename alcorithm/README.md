@@ -1,6 +1,6 @@
 # Запрещено запускать без музыкального сопровождения
 
-## [>> Слушать <<](https://youtu.be/bVTWM8l03mE?list=PLsVSwDpepsQmPcDiH6hCRbG0nGh-jdGAB)
+## [>> Слушать <<]((https://youtu.be/bVTWM8l03mE))
 
 ## ,';-3
 
